@@ -1,0 +1,15 @@
+{
+  "name": "custom-wa-wrapper",
+  "version": "1.0.0",
+  "description": "Custom Wrapper to Watson Assistant to interact with Watson Openscale",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "watson-assistant",
+    "watson-openscale"
+  ],
+  "author": "Prem Piyush Goyal",
+  "license": "MIT"
+}
