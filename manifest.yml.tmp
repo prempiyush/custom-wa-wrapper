@@ -1,0 +1,13 @@
+applications:
+- name: "custom-wa-wrapper"
+  routes:
+    - route: "custom-wa-wrapper.us-south.cf.appdomain.cloud"
+  path: .
+  command: node ./app.js
+  instances: 1
+  memory: 1G
+  disk_quota: 256M
+  buildpacks:
+    - sdk-for-nodejs
+  env:
+    WATSON_ASSISTANT_APIKEY: <your watson assistant api key>
