@@ -10,4 +10,6 @@ applications:
   buildpacks:
     - sdk-for-nodejs
   env:
+    WATSON_ASSISTANT_API_URL: <your watson assistant api url>
     WATSON_ASSISTANT_APIKEY: <your watson assistant api key>
+    WATSON_ASSISTANT_ID: <your watson assistant id>

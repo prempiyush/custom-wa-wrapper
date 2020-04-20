@@ -6,12 +6,9 @@ const mapLimit = require("async/mapLimit");
 const AssistantV2 = require("ibm-watson/assistant/v2");
 const { IamAuthenticator } = require("ibm-watson/auth");
 
-const WATSON_ASSISTANT_ID = "db3960e3-eb1e-47b6-865d-cddb7c0c3db4";
-
-
 function create_session(assistant) {
     return assistant.createSession({
-        assistantId: WATSON_ASSISTANT_ID
+        assistantId: process.env.WATSON_ASSISTANT_ID
     }).then((response) => {
         logger.info("Got the WA Session ID");
         return Promise.resolve(response.result.session_id);
@@ -22,16 +19,8 @@ function create_session(assistant) {
 }
 
 function individual_score(assistant, session_id, utterance, req, retries = 3) {
-    console.log(JSON.stringify({
-        input: {
-            text: utterance,
-            options: {
-                alternate_intents: true
-            }
-        }
-    }));
     return assistant.message({
-        assistantId: WATSON_ASSISTANT_ID,
+        assistantId: process.env.WATSON_ASSISTANT_ID,
         sessionId: session_id,
         input: {
             text: utterance,
@@ -60,7 +49,6 @@ function individual_score(assistant, session_id, utterance, req, retries = 3) {
  */
 function manipulate(utterance, result) {
     try {
-        console.log(JSON.stringify(result, 4));
         let values = [utterance];
         values.push(result.output.intents[0].intent);
         let probabilities = _.sortBy(result.output.intents, "intent").map(intent => intent.confidence);
@@ -83,7 +71,7 @@ function score(req, res) {
         authenticator: new IamAuthenticator({
             apikey: process.env.WATSON_ASSISTANT_APIKEY,
         }),
-        url: "https://api.us-south.assistant.watson.cloud.ibm.com/instances/25e8f139-6ddb-44f9-84f7-a1e3340cc9fa",
+        url: process.env.WATSON_ASSISTANT_API_URL,
     });
     try {
         create_session(assistant).then(async (session_id) => {
