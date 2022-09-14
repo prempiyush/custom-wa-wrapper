@@ -27,6 +27,6 @@
         "express-basic-auth": "^1.2.0",
         "ibm-watson": "^5.4.0",
         "lodash": "^4.17.21",
-        "log4js": "^6.1.2"
+        "log4js": "^6.4.0"
     }
 }
