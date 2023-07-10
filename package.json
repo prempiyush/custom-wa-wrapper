@@ -18,14 +18,14 @@
     "author": "Prem Piyush Goyal",
     "license": "MIT",
     "devDependencies": {
-        "eslint": "^6.8.0"
+        "eslint": "^8.44.0"
     },
     "dependencies": {
         "async": "^3.2.2",
         "body-parser": "^1.20.1",
         "express": "^4.17.3",
         "express-basic-auth": "^1.2.0",
-        "ibm-watson": "^5.4.0",
+        "ibm-watson": "^8.0.0",
         "lodash": "^4.17.21",
         "log4js": "^6.4.0"
     }
